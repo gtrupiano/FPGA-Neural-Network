@@ -1,0 +1,81 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use work.components.all;
+
+
+entity Hidden_Layer_Neuron_tb is
+--  Port ( );
+end Hidden_Layer_Neuron_tb;
+
+architecture Behavioral of Hidden_Layer_Neuron_tb is
+
+SIGNAL sensitivity_out: std_logic_vector(31 downto 0);
+SIGNAL activation_out: std_logic_vector(31 downto 0);
+SIGNAL load_hidden,sel_init,clk,clr, aLoad: std_logic := '0';
+
+
+begin
+    
+    clock : process
+    begin
+        clk <= '1'; wait for 5 ns;
+        clk <= '0'; wait for 5 ns;
+    end process;
+    
+    
+    test: Hidden_Layer_Neuron port map(activation_11 => X"00001000", 
+                                                  activation_12 => X"00001000",
+                                                  activation_13 => X"00001000", 
+                                                  activation_14 => X"00001000",
+                                                  activation_15 => X"00001000",
+                                                  activation_16 => X"00001000",
+                                                  activation_17 => X"00001000", 
+                                                  activation_18 => X"00001000",
+                                                  initialize_W11 => X"00001000", 
+                                                  initialize_W12 => X"00001000",
+                                                  initialize_W13 => X"00001000",
+                                                  initialize_W14 => X"00001000",
+                                                  initialize_W15 => X"00001000", 
+                                                  initialize_W16 => X"00001000",
+                                                  initialize_W17 => X"00001000",
+                                                  initialize_W18 => X"00001000",
+                                                  Load_Wij => load_hidden,
+                                                  sel_init => sel_init,
+                                                  clk => clk, clr => clr,
+                                                  nextW1 => X"00001000",
+                                                  nextW2 => X"00001000",
+                                                  nextW3 => X"00001000",
+                                                  aLoad => aLoad,
+                                                  nextSens1 => X"00001000",
+                                                  nextSens2 => X"00001000",
+                                                  nextSens3 => X"00001000",
+              
+                                                  learning_Rate => X"00001000",
+    
+              
+              --Outputs from hidden layer neuron
+              sensitivity_out => sensitivity_out,
+              activation_out => activation_out
+    
+        );
+    
+    
+    stim_proc: process 
+        begin
+            wait for 100ns;
+            clr <= '1';
+            wait for 5 ns; 
+            clr <= '0';
+            sel_init <= '1';
+            load_hidden <= '1';
+            wait for 5ns;
+            sel_init <= '0';
+            aLoad <= '1';
+        end process;
+        
+    
+    
+    
+
+
+end Behavioral;
