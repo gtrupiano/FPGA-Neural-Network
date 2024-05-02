@@ -32,7 +32,7 @@ bias_register: Reg generic map(N => 32) port map(load => Load_Bij, input => muxO
 
 multOut <= sensitivity * learning_Rate;
 
-new_Bij <= multOut(55 downto 24) - Bias_ij;
+new_Bij <= Bias_ij - multOut(55 downto 24) ;
 
 
 Bij <= new_Bij;
