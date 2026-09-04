@@ -15,7 +15,7 @@ In this project, the design and implementation of a neural network on a field-pr
 
 ## Structure of Network with Components
 
-![](Project_Information/Images/Component_Images/Network_With_Components.png)
+![](docs/Images/Component_Images/Network_With_Components.png)
 <br><br>
 
 
